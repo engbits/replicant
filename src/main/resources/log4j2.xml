@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" name="replicant">
+    <Properties>
+        <Property name="log-path">logs</Property>
+    </Properties>
+
+    <Appenders>
+        <!-- main log file, provide overall system behavior -->
+        <RollingFile name="replicant"
+                     fileName="${log-path}/replicant.log"
+                     filePattern="${log-path}/replicant-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout>
+                <Pattern>%d{ISO8601} %level{length=1} [%t] [%X{X-B3-TraceId},%X{X-B3-SpanId}] %c{1.} - %msg%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout>
+                <Pattern>%d{ISO8601} %level{length=1} [%t] [%X{X-B3-TraceId},%X{X-B3-SpanId}] %c{1.} - %msg%n</Pattern>
+            </PatternLayout>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="com.engbits.replicant" additivity="false">
+            <AppenderRef ref="replicant" level="debug" />
+        </Logger>
+
+        <Root level="info" additivity="false">
+            <AppenderRef ref="console" />
+        </Root>
+    </Loggers>
+</Configuration>

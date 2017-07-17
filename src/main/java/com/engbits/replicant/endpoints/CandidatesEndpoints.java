@@ -7,10 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
+import java.util.List;
 
 /**
  * REST endpoint for working with all {@link Candidate} data in the Replicant system
@@ -47,6 +45,27 @@ public class CandidatesEndpoints {
     public Candidate createCandidate(final Candidate candidate) {
         LOG.debug("Creating Candidate: {}", candidate);
         return candidatesService.createCandidate(candidate);
+    }
+
+    /**
+     * Gets a {@link Candidate} with the given ID
+     * @param candidateId ID of the {@link Candidate} to retrieve
+     * @return {@link Candidate} with the given ID
+     */
+    @GET
+    @Path("/{candidateId}")
+    public Candidate getCandidateById(final @PathParam("candidateId") Long candidateId) {
+        return candidatesService.getCandidateById(candidateId);
+    }
+
+    /**
+     * Gets all known {@link Candidate}s in the system
+     * @return {@link List} of all {@link Candidate}s known
+     */
+    @GET
+    @Path("/")
+    public List<Candidate> getCandidates() {
+        return candidatesService.getCandidates();
     }
 
 }

@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
+import java.util.List;
 
 /**
  * Service that handles all functionality for {@link Candidate} data
@@ -37,6 +38,25 @@ public class CandidatesService {
     public Candidate createCandidate(final Candidate candidate) {
         candidatesDao.insert(candidate);
         return candidate;
+    }
+
+    /**
+     * Gets a {@link Candidate} with the given ID of the Candidate, or null if not found
+     * @param candidateId ID of the {@link Candidate} to query
+     * @return {@link Candidate} that with the given ID, or null if not found
+     */
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public Candidate getCandidateById(final Long candidateId) {
+        return candidatesDao.selectById(candidateId);
+    }
+
+    /**
+     * Gets all of the {@link Candidate}s in the system
+     * @return {@link List} of all known {@link Candidate}s
+     */
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public List<Candidate> getCandidates() {
+        return candidatesDao.selectAll();
     }
 
 }

@@ -1,6 +1,7 @@
 package com.engbits.replicant;
 
-import com.engbits.replicant.endpoints.CandidatesEndpoints;
+import com.engbits.replicant.endpoints.CandidatesEndpoint;
+import com.engbits.replicant.endpoints.JobsEndpoint;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +18,8 @@ import javax.ws.rs.ApplicationPath;
 public class JerseyConfig extends ResourceConfig {
 
     public JerseyConfig() {
-        register(CandidatesEndpoints.class);
+        register(CandidatesEndpoint.class);
+        register(JobsEndpoint.class);
     }
 
 }

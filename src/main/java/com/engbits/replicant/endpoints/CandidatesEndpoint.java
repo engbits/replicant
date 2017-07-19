@@ -20,9 +20,9 @@ import java.util.List;
 @Path("/candidates")
 @Consumes("application/json")
 @Produces("application/json")
-public class CandidatesEndpoints {
+public class CandidatesEndpoint {
 
-    private static final Logger LOG = LoggerFactory.getLogger(CandidatesEndpoints.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CandidatesEndpoint.class);
 
     private final CandidatesService candidatesService;
 
@@ -31,7 +31,7 @@ public class CandidatesEndpoints {
      * @param candidatesService {@link CandidatesService} for all Candidate functionality
      */
     @Inject
-    public CandidatesEndpoints(final CandidatesService candidatesService) {
+    public CandidatesEndpoint(final CandidatesService candidatesService) {
         this.candidatesService = candidatesService;
     }
 

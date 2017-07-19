@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Replicant > Candidates</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="navbar-static-top.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- Static navbar -->
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Replicant</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="jobs.html"><span class="glyphicon glyphicon-briefcase"></span> Jobs</a></li>
+                <li class="active"><a href="candidates.html"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Candidates</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Log out</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Administration</li>
+                        <li><a href="#">Users</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Candidates</h2>
+            <hr/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="firstName" class="col-md-4 control-label">First Name</label>
+                    <div class="col-md-5">
+                        <input type="text" class="form-control" id="firstName" placeholder="First">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastName" class="col-md-4 control-label">Last Name</label>
+                    <div class="col-md-5">
+                        <input type="text" class="form-control" id="lastName" placeholder="Last">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-md-4 control-label">Email</label>
+                    <div class="col-md-5">
+                        <input type="email" class="form-control" id="email" placeholder="email@domain.com">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="phone" class="col-md-4 control-label">Phone</label>
+                    <div class="col-md-5">
+                        <input type="text" class="form-control" id="phone" placeholder="206-867-5309">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-4 col-md-5">
+                        <button type="submit" class="btn btn-success">Add Candidate</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div> <!-- /container -->
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

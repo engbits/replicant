@@ -1,4 +1,4 @@
-package com.engbits.replicant;
+package org.engbits.replicant;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;

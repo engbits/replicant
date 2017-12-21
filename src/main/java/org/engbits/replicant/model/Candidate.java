@@ -1,4 +1,4 @@
-package com.engbits.replicant.model;
+package org.engbits.replicant.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

@@ -1,7 +1,7 @@
-package com.engbits.replicant.service;
+package org.engbits.replicant.service;
 
-import com.engbits.replicant.dao.JobsDao;
-import com.engbits.replicant.model.Job;
+import org.engbits.replicant.dao.JobsDao;
+import org.engbits.replicant.model.Job;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;

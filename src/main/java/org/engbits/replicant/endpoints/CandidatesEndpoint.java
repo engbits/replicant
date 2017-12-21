@@ -1,7 +1,7 @@
-package com.engbits.replicant.endpoints;
+package org.engbits.replicant.endpoints;
 
-import com.engbits.replicant.model.Candidate;
-import com.engbits.replicant.service.CandidatesService;
+import org.engbits.replicant.model.Candidate;
+import org.engbits.replicant.service.CandidatesService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

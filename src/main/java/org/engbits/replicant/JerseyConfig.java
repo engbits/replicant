@@ -1,7 +1,7 @@
-package com.engbits.replicant;
+package org.engbits.replicant;
 
-import com.engbits.replicant.endpoints.CandidatesEndpoint;
-import com.engbits.replicant.endpoints.JobsEndpoint;
+import org.engbits.replicant.endpoints.CandidatesEndpoint;
+import org.engbits.replicant.endpoints.JobsEndpoint;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.stereotype.Component;
 

@@ -1,6 +1,6 @@
-package com.engbits.replicant.dao;
+package org.engbits.replicant.dao;
 
-import com.engbits.replicant.model.Candidate;
+import org.engbits.replicant.model.Candidate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -15,7 +15,7 @@ import java.time.Instant;
 import java.util.List;
 
 /**
- * DAO to handle the persistence of {@link com.engbits.replicant.model.Candidate} entities
+ * DAO to handle the persistence of {@link Candidate} entities
  *
  * @author replicant.team
  * @since 0.1.0

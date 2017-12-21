@@ -1,7 +1,7 @@
-package com.engbits.replicant.service;
+package org.engbits.replicant.service;
 
-import com.engbits.replicant.dao.CandidatesDao;
-import com.engbits.replicant.model.Candidate;
+import org.engbits.replicant.dao.CandidatesDao;
+import org.engbits.replicant.model.Candidate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;

@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Replicant > Candidates</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.css" rel="stylesheet" />
@@ -9,86 +10,76 @@
 
 <body>
 
-<!-- Static navbar -->
-<nav class="navbar navbar-default navbar-static-top">
-    <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Replicant</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="jobs.html"><span class="glyphicon glyphicon-briefcase"></span> Jobs</a></li>
-                <li class="active"><a href="candidates.html"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Candidates</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Profile</a></li>
-                        <li><a href="#">Log out</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li class="dropdown-header">Administration</li>
-                        <li><a href="#">Users</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div><!--/.nav-collapse -->
-    </div>
-</nav>
-
-
-<div class="container">
-
-    <div class="row">
-        <div class="col-md-12">
-            <h2>Candidates</h2>
-            <hr/>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-12">
-            <div class="btn-group btn-group-sm pull-right" role="group">
-                <a href="add_candidate.html" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Add Candidate</a>
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Replicant</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="jobs.html"><span class="glyphicon glyphicon-briefcase"></span> Jobs</a></li>
+                    <li class="active"><a href="candidates.html"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Candidates</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">Log out</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">Administration</li>
+                            <li><a href="#">Users</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
-    </div>
+    </nav>
 
-    <div class="row">
-        <div class="col-md-12">
-            <br/>
-            <table class="table table-condensed">
-                <thead>
-                <tr>
-                    <th>Candidate</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Tools</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td><a href="#">Justin Hanney</a></td>
-                    <td>justin@hanney.net</td>
-                    <td>206-867-5309</td>
-                    <td>
-                        <a href="#" class="btn btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td><a href="#">Ryan Dorn</a></td>
-                    <td>dorn@dornosaur.com</td>
-                    <td>206-867-5310</td>
-                    <td>
-                        <a href="#" class="btn btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Candidates</h2>
+                <hr/>
+            </div>
         </div>
-    </div>
 
-</div> <!-- /container -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="btn-group btn-group-sm pull-right" role="group">
+                    <a href="add_candidate.html" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Add Candidate</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <br/>
+                <table class="table table-condensed">
+                    <thead>
+                    <tr>
+                        <th>Candidate</th>
+                        <th>Email</th>
+                        <th>Tools</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="candidate : ${candidates}">
+                            <td th:text="|${candidate.firstName} ${candidate.lastName}|">Person</td>
+                            <td th:text="${candidate.email}">person@replicant.com</td>
+                            <td>
+                                <a href="#" class="btn btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
 
 
 <!-- Bootstrap core JavaScript

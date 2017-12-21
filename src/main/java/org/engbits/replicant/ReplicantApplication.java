@@ -16,7 +16,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  * @since 0.1.0
  */
 @SpringBootApplication
-@EntityScan("com.engbits.replicant.model")
+@EntityScan("org.engbits.replicant.model")
 @EnableJpaRepositories
 @Configuration
 @PropertySources({

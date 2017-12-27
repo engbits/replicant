@@ -8,7 +8,9 @@ import org.engbits.replicant.model.Job;
 import org.engbits.replicant.service.JobsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.inject.Inject;
 
@@ -30,12 +32,26 @@ public class JobsController {
         this.jobsService = jobsService;
     }
 
-    @RequestMapping("/jobs")
+    @PostMapping("/jobs")
+    public String addJob(@ModelAttribute final Job job) {
+        jobsService.createJob(job);
+
+        return "redirect:/jobs";
+    }
+
+    @GetMapping("/jobs")
     public String showJobs(final Model model) {
         final List<Job> jobs = jobsService.getJobs();
         model.addAttribute("jobs", jobs);
 
         return "jobs";
+    }
+
+    @GetMapping("/jobs/add")
+    public String showAddJob(final Model model) {
+        model.addAttribute("job", new Job());
+
+        return "add_job";
     }
 
 }

@@ -2,6 +2,8 @@ package org.engbits.replicant.service;
 
 import org.engbits.replicant.dao.JobsDao;
 import org.engbits.replicant.model.Job;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +19,8 @@ import java.util.List;
  */
 @Service
 public class JobsService {
+
+    private static final Logger LOG = LoggerFactory.getLogger(JobsService.class);
 
     private final JobsDao jobsDao;
 
@@ -36,7 +40,9 @@ public class JobsService {
      */
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Job createJob(final Job job) {
+        LOG.debug("Creating new Job: {}", job);
         jobsDao.insert(job);
+
         return job;
     }
 
@@ -47,6 +53,7 @@ public class JobsService {
      */
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Job getJobById(final Long jobId) {
+        LOG.debug("Getting Job by ID: {}", jobId);
         return jobsDao.selectById(jobId);
     }
 

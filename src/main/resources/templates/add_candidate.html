@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Replicant > Candidates</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Replicant</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/jobs"><span class="glyphicon glyphicon-briefcase"></span> Jobs</a></li>
+                    <li class="active"><a href="candidates.html"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Candidates</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Candidates</h2>
+                <hr/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form-horizontal" action="#" th:action="@{/candidates}" th:object="${candidate}" method="post">
+                    <div class="form-group">
+                        <label for="firstName" class="col-md-4 control-label">First Name</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" th:field="*{firstName}" id="firstName" placeholder="First" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName" class="col-md-4 control-label">Last Name</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control" th:field="*{lastName}" id="lastName" placeholder="Last" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="col-md-4 control-label">Email</label>
+                        <div class="col-md-5">
+                            <input type="email" class="form-control" th:field="*{email}" id="email" placeholder="email@domain.com" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-4 col-md-5">
+                            <button type="submit" class="btn btn-success">Add Candidate</button>
+                            <button type="reset" class="btn btn-default">Reset</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="/js/bootstrap.js"></script>
+</body>
+</html>

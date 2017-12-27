@@ -20,18 +20,6 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="/jobs"><span class="glyphicon glyphicon-briefcase"></span> Jobs</a></li>
                     <li><a href="/candidates"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Candidates</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Profile</a></li>
-                            <li><a href="#">Log out</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li class="dropdown-header">Administration</li>
-                            <li><a href="#">Users</a></li>
-                        </ul>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -63,16 +51,12 @@
                     <tr>
                         <th>Title</th>
                         <th>Hiring Manager</th>
-                        <th>Tools</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="job : ${jobs}">
                         <td th:text="${job.title}">Title</td>
                         <td th:text="${job.hiringManager}">Hiring Manager</td>
-                        <td>
-                            <a href="#" class="btn btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
-                        </td>
                     </tr>
                     </tbody>
                 </table>

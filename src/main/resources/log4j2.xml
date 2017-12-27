@@ -27,7 +27,7 @@
     </Appenders>
 
     <Loggers>
-        <Logger name="com.engbits.replicant" additivity="false">
+        <Logger name="org.engbits.replicant" additivity="false">
             <AppenderRef ref="replicant" level="debug" />
         </Logger>
 

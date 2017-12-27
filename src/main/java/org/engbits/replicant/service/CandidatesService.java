@@ -2,6 +2,8 @@ package org.engbits.replicant.service;
 
 import org.engbits.replicant.dao.CandidatesDao;
 import org.engbits.replicant.model.Candidate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +19,8 @@ import java.util.List;
  */
 @Service
 public class CandidatesService {
+
+    private static final Logger LOG = LoggerFactory.getLogger(CandidatesService.class);
 
     private final CandidatesDao candidatesDao;
 
@@ -36,7 +40,9 @@ public class CandidatesService {
      */
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Candidate createCandidate(final Candidate candidate) {
+        LOG.debug("Creating new Candidate: {}", candidate);
         candidatesDao.insert(candidate);
+
         return candidate;
     }
 
@@ -47,6 +53,8 @@ public class CandidatesService {
      */
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Candidate getCandidateById(final Long candidateId) {
+        LOG.debug("Getting Candidate by ID: ()", candidateId);
+
         return candidatesDao.selectById(candidateId);
     }
 

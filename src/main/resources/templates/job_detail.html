@@ -41,6 +41,27 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-condensed">
+                    <tbody>
+                        <tr>
+                            <td><b>Title</b></td>
+                            <td th:text="${job.title}">Title</td>
+                        </tr>
+                        <tr>
+                            <td><b>Hiring Manager</b></td>
+                            <td th:text="${job.hiringManager}">Hiring Manager</td>
+                        </tr>
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td th:text="${job.description}">Description</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
     </div>
 
 

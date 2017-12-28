@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.inject.Inject;
@@ -37,6 +38,14 @@ public class JobsController {
         jobsService.createJob(job);
 
         return "redirect:/jobs";
+    }
+
+    @GetMapping("/jobs/{jobId}")
+    public String showJob(final Model model, @PathVariable("jobId") final Long jobId) {
+        final Job job = jobsService.getJobById(jobId);
+        model.addAttribute("job", job);
+
+        return "job_detail";
     }
 
     @GetMapping("/jobs")

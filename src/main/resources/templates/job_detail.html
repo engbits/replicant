@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Replicant > Jobs</title>
+    <title>Replicant > Candidates</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
     <!-- Bootstrap core CSS -->
@@ -30,36 +30,14 @@
 
         <div class="row">
             <div class="col-md-12">
-                <h2>Jobs</h2>
+                <h2 th:text="${job.title}">Job Title</h2>
                 <hr/>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-12">
-                <div class="btn-group btn-group-sm pull-right" role="group">
-                    <a href="/jobs/add" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Add Job</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <br/>
-                <table class="table table-condensed">
-                    <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Hiring Manager</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="job : ${jobs}">
-                        <td><a href="#" th:href="@{'/jobs/' + ${job.jobId}}" th:text="${job.title}">Title</a></td>
-                        <td th:text="${job.hiringManager}">Hiring Manager</td>
-                    </tr>
-                    </tbody>
-                </table>
+                <h3>Job Summary</h3>
             </div>
         </div>
 

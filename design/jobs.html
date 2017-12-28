@@ -1,101 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-
     <title>Replicant > Jobs</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="navbar-static-top.css" rel="stylesheet">
 </head>
 
 <body>
 
-<!-- Static navbar -->
-<nav class="navbar navbar-default navbar-static-top">
-    <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Replicant</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="jobs.html"><span class="glyphicon glyphicon-briefcase"></span> Jobs</a></li>
-                <li><a href="candidates.html"><span class="glyphicon glyphicon-user"></span> Candidates</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Profile</a></li>
-                        <li><a href="#">Log out</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li class="dropdown-header">Administration</li>
-                        <li><a href="#">Users</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div><!--/.nav-collapse -->
-    </div>
-</nav>
-
-
-<div class="container">
-
-    <div class="row">
-        <div class="col-md-12">
-            <h2>Jobs</h2>
-            <hr/>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-12">
-            <div class="btn-group btn-group-sm pull-right" role="group">
-                <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Add Job</a>
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Replicant</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="jobs.html"><span class="glyphicon glyphicon-briefcase"></span> Jobs</a></li>
+                    <li><a href="candidates.html"><span class="glyphicon glyphicon-user"></span> Candidates</a></li>
+                </ul>
             </div>
         </div>
-    </div>
+    </nav>
 
-    <div class="row">
-        <div class="col-md-12">
-            <br/>
-            <table class="table table-condensed">
-                <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Hiring Manager</th>
-                    <th>Tools</th>
-                </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><a href="#">Software Development Engineer/Lead</a></td>
-                        <td>Ken Poon</td>
-                        <td>
-                            <a href="#" class="btn btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">Software Development Engineer in Test</a></td>
-                        <td>Ken Poon</td>
-                        <td>
-                            <a href="#" class="btn btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Jobs</h2>
+                <hr/>
+            </div>
         </div>
-    </div>
 
-</div> <!-- /container -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="btn-group btn-group-sm pull-right" role="group">
+                    <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Add Job</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <br/>
+                <table class="table table-condensed">
+                    <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Hiring Manager</th>
+                        <th>Days Open</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="job_detail.html">Software Development Engineer/Lead</a></td>
+                            <td>Ken Poon</td>
+                            <td><span class="label label-success">16</span></td>
+                        </tr>
+                        <tr>
+                            <td>Software Development Engineer III</td>
+                            <td>Ken Poon</td>
+                            <td><span class="label label-danger">68</span></td>
+                        </tr>
+                        <tr>
+                            <td>Software Development Engineer in Test</td>
+                            <td>Ken Poon</td>
+                            <td><span class="label label-warning">37</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
 
 
 <!-- Bootstrap core JavaScript

@@ -1,7 +1,10 @@
 package org.engbits.replicant.service;
 
+import org.engbits.replicant.dao.JobCandidatesDao;
 import org.engbits.replicant.dao.JobsDao;
+import org.engbits.replicant.model.Candidate;
 import org.engbits.replicant.model.Job;
+import org.engbits.replicant.model.JobCandidate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -9,6 +12,8 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
+
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -23,14 +28,17 @@ public class JobsService {
     private static final Logger LOG = LoggerFactory.getLogger(JobsService.class);
 
     private final JobsDao jobsDao;
+    private final JobCandidatesDao jobCandidatesDao;
 
     /**
      * Constructor to make a new service with all injected, required components
      * @param jobsDao {@link JobsDao} to handle {@link Job} persistence
      */
     @Inject
-    public JobsService(final JobsDao jobsDao) {
-        this.jobsDao = jobsDao;
+    public JobsService(final JobsDao jobsDao,
+                       final JobCandidatesDao jobCandidatesDao) {
+        this.jobsDao          = jobsDao;
+        this.jobCandidatesDao = jobCandidatesDao;
     }
 
     /**
@@ -44,6 +52,16 @@ public class JobsService {
         jobsDao.insert(job);
 
         return job;
+    }
+
+    /**
+     * Gets all of the Candidates that are tagged for a given Job
+     * @param jobId ID of the Job to get Candidates
+     * @return {@link List} of {@link Candidate} for the Job, or empty list if none
+     */
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public List<Candidate> getCandidatesForJob(final Long jobId) {
+        return new LinkedList<>();
     }
 
     /**
@@ -64,6 +82,21 @@ public class JobsService {
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public List<Job> getJobs() {
         return jobsDao.selectAll();
+    }
+
+    /**
+     * Tags a Candidate for a specific Job ID
+     * @param candidateId ID of the Candidate to Tag
+     * @param jobId ID of the Job to tag for the Candidate
+     */
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void tagCandidateForJob(final Long candidateId, final Long jobId) {
+        LOG.debug("Tagging Candidate [{}] for Job: {}", candidateId, jobId);
+        final JobCandidate jobCandidate = new JobCandidate();
+        jobCandidate.setJobId(jobId);
+        jobCandidate.setCandidateId(candidateId);
+
+        jobCandidatesDao.insert(jobCandidate);
     }
 
 }

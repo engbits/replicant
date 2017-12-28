@@ -7,14 +7,12 @@ package org.engbits.replicant.controllers;
 import org.engbits.replicant.model.Candidate;
 import org.engbits.replicant.service.CandidatesService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.inject.Inject;
-
-import java.util.List;
 
 /**
  * Controller for Candidates functionality
@@ -41,18 +39,19 @@ public class CandidatesController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String showCandidates(final Model model) {
-        final List<Candidate> candidates = candidatesService.getCandidates();
-        model.addAttribute("candidates", candidates);
+    public ModelAndView showCandidates() {
+        final ModelAndView mv = new ModelAndView("candidates");
+        mv.addObject("candidates", candidatesService.getCandidates());
 
-        return "candidates";
+        return mv;
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String showAddCandidate(final Model model) {
-        model.addAttribute("candidate", new Candidate());
+    public ModelAndView showAddCandidate() {
+        final ModelAndView mv = new ModelAndView("add_candidate");
+        mv.addObject("candidate", new Candidate());
 
-        return "add_candidate";
+        return mv;
     }
 
 }

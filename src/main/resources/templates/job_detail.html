@@ -37,6 +37,58 @@
 
         <div class="row">
             <div class="col-md-12">
+                <h3>Candidates</h3>
+
+                <!-- Show notice of lack of Candidates if list is empty -->
+                <div class="row" th:if="${job.candidates.empty}">
+                    <div class="col-md-12">
+                        <p class="text-center">
+                            There are currently not any Candidates tagged for this job.
+                        </p>
+                        <div class="text-center">
+                            <div class="btn-group btn-group-sm" role="group">
+                                <a href="#" data-toggle="modal" data-target="#tagCandidateModal" class="btn btn-success">
+                                    <span class="glyphicon glyphicon-plus"></span> Tag Candidate
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" th:if="${!job.candidates.empty}">
+                    <div class="col-md-12">
+                        <div class="btn-group btn-group-sm pull-right" role="group">
+                            <a href="#" data-toggle="modal" data-target="#tagCandidateModal" class="btn btn-success">
+                                <span class="glyphicon glyphicon-plus"></span> Tag Candidate
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" th:if="${!job.candidates.empty}">
+                    <div class="col-md-12">
+                        <br/>
+                        <table class="table table-condensed">
+                            <thead>
+                            <tr>
+                                <th>Candidate</th>
+                                <th>Next Step</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="candidate : ${job.candidates}">
+                                <td th:text="|${candidate.candidate.firstName} ${candidate.candidate.lastName}|">Candidate</td>
+                                <td>Unknown</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
                 <h3>Job Summary</h3>
             </div>
         </div>
@@ -64,11 +116,46 @@
 
     </div>
 
+    <!-- Tag Candidate Modal -->
+    <div id="tagCandidateModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Tag Candidate for Job</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form class="form-horizontal" id="tagCandidateForm" th:action="@{/jobs/{jobId}/tag(jobId=${job.jobId})}" th:object="${jobCandidate}" method="post">
+                                <div class="form-group">
+                                    <label for="candidateId" class="col-md-4 control-label">First Name</label>
+                                    <div class="col-md-5">
+                                        <select class="form-control" id="candidateId" th:field="*{candidateId}">
+                                            <option th:each="candidate : ${allCandidates}"
+                                                    th:value="${candidate.candidateId}"
+                                                    th:text="|${candidate.firstName} ${candidate.lastName}|">Candidate Name</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="tagCandidateButton" type="button" class="btn btn-success">Tag Candidate</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="/js/bootstrap.js"></script>
+<script src="/js/replicant.js"></script>
 </body>
 </html>

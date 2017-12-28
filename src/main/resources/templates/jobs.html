@@ -40,26 +40,31 @@
                 <div class="btn-group btn-group-sm pull-right" role="group">
                     <a href="/jobs/add" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Add Job</a>
                 </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <br/>
-                <table class="table table-condensed">
-                    <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Hiring Manager</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="job : ${jobs}">
-                        <td><a href="#" th:href="@{'/jobs/' + ${job.jobId}}" th:text="${job.title}">Title</a></td>
-                        <td th:text="${job.hiringManager}">Hiring Manager</td>
-                    </tr>
-                    </tbody>
-                </table>
+                <div class="row">
+                    <div class="col-md-12">
+                        <br/>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Hiring Manager</th>
+                                <th>Candidates</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="job : ${jobs}">
+                                <td><a href="#" th:href="@{'/jobs/' + ${job.jobId}}" th:text="${job.title}">Title</a></td>
+                                <td th:text="${job.hiringManager}">Hiring Manager</td>
+                                <td>
+                                    <span th:class="${#lists.size(job.candidates) > 0 ? 'label label-success' : 'label label-warning'}"
+                                          th:text="${#lists.size(job.candidates)}">1</span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -71,5 +76,6 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="/js/bootstrap.js"></script>
+<script src="/js/replicant.js"></script>
 </body>
 </html>

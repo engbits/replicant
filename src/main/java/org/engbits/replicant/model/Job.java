@@ -1,9 +1,15 @@
 package org.engbits.replicant.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
+
+import java.io.Serializable;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Model of a Job in the Replicant system
@@ -13,7 +19,9 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "jobs")
-public class Job {
+public class Job implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -28,6 +36,10 @@ public class Job {
 
     @Column(name = "hiring_manager")
     private String hiringManager;
+
+    @Fetch(FetchMode.SUBSELECT)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "jobId")
+    private List<JobCandidate> candidates = new LinkedList<>();
 
     @JsonIgnore
     @Column(name = "create_date", nullable = false, updatable = false)
@@ -67,6 +79,14 @@ public class Job {
 
     public void setHiringManager(String hiringManager) {
         this.hiringManager = hiringManager;
+    }
+
+    public List<JobCandidate> getCandidates() {
+        return candidates;
+    }
+
+    public void setCandidates(final List<JobCandidate> candidates) {
+        this.candidates = candidates;
     }
 
     public Date getCreateDate() {

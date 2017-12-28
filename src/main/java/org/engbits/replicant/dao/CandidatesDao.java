@@ -58,6 +58,16 @@ public class CandidatesDao {
     }
 
     /**
+     * Updates the {@link Candidate} entity with the newly supplied entity
+     * @param candidate {@link Candidate} entity that is to be updated
+     * @return {@link Candidate} entity that was updated
+     */
+    public Candidate update(final Candidate candidate) {
+        LOG.debug("Updating Candidate: {}", candidate);
+        return entityManager.merge(candidate);
+    }
+
+    /**
      * Selects the specific Candidate with the given ID
      * @param candidateId ID of the Candidate to select
      * @return {@link Candidate} record with the given ID or null if not found

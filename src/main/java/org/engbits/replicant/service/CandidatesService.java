@@ -47,6 +47,19 @@ public class CandidatesService {
     }
 
     /**
+     * Edits a {@link Candidate} by updating all values supplied in the object
+     * @param candidate {@link Candidate} representing the new object to update
+     * @return {@link Candidate} with all edits completed
+     */
+    @Transactional(propagation =  Propagation.REQUIRES_NEW)
+    public Candidate editCandidate(final Candidate candidate) {
+        LOG.debug("Editing Candidate: {}", candidate);
+        candidatesDao.update(candidate);
+
+        return candidate;
+    }
+
+    /**
      * Gets a {@link Candidate} with the given ID of the Candidate, or null if not found
      * @param candidateId ID of the {@link Candidate} to query
      * @return {@link Candidate} that with the given ID, or null if not found

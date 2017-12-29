@@ -4,6 +4,10 @@
 
 package org.engbits.replicant.controllers;
 
+import org.apache.commons.lang3.StringUtils;
+import org.commonmark.node.Node;
+import org.commonmark.parser.Parser;
+import org.commonmark.renderer.html.HtmlRenderer;
 import org.engbits.replicant.model.Job;
 import org.engbits.replicant.model.JobCandidate;
 import org.engbits.replicant.service.CandidatesService;
@@ -48,11 +52,22 @@ public class JobsController {
 
     @RequestMapping(value = "/{jobId}", method = RequestMethod.GET)
     public ModelAndView showJob(@PathVariable("jobId") final Long jobId) {
+        final Job job = jobsService.getJobById(jobId);
+
         final ModelAndView mv = new ModelAndView("job_detail");
-        mv.addObject("job", jobsService.getJobById(jobId));
+        mv.addObject("job", job);
         mv.addObject("candidates", jobsService.getCandidatesForJob(jobId));
         mv.addObject("allCandidates", candidatesService.getCandidates());
         mv.addObject("jobCandidate", new JobCandidate());
+
+        // Convert the JD to HTML
+        if(StringUtils.isNotBlank(job.getDescription())) {
+            final Parser parser = Parser.builder().build();
+            final Node document = parser.parse(job.getDescription());
+            final HtmlRenderer htmlRenderer = HtmlRenderer.builder().build();
+            final String jobDescription = htmlRenderer.render(document);
+            mv.addObject("jobDescription", jobDescription);
+        }
 
         return mv;
     }

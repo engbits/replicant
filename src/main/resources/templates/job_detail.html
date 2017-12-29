@@ -95,22 +95,16 @@
 
         <div class="row">
             <div class="col-md-12">
-                <table class="table table-condensed">
-                    <tbody>
-                        <tr>
-                            <td><b>Title</b></td>
-                            <td th:text="${job.title}">Title</td>
-                        </tr>
-                        <tr>
-                            <td><b>Hiring Manager</b></td>
-                            <td th:text="${job.hiringManager}">Hiring Manager</td>
-                        </tr>
-                        <tr>
-                            <td><b>Description</b></td>
-                            <td th:text="${job.description}">Description</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <dl class="dl-horizontal">
+                    <dt>Title</dt>
+                    <dd th:text="${job.title}">Title</dd>
+
+                    <dt>Hiring Manager</dt>
+                    <dd th:text="${job.hiringManager}">Hiring Manager</dd>
+
+                    <dt>Description</dt>
+                    <dd th:utext="${jobDescription}">Description</dd>
+                </dl>
             </div>
         </div>
 

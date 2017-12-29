@@ -6,6 +6,10 @@ package org.engbits.replicant.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
@@ -28,6 +32,11 @@ public class JobCandidate implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name = "job_candidate_id", nullable = false)
+    private Long jobCandidateId;
+
+    @Id
     @Column(name = "job_id", nullable = false)
     public Long jobId;
 
@@ -42,6 +51,17 @@ public class JobCandidate implements Serializable {
     @JoinColumn(name = "candidate_id", updatable = false, insertable = false)
     @OneToOne(targetEntity = Candidate.class)
     private Candidate candidate;
+
+    @Enumerated(EnumType.STRING)
+    private ScreenType nextStep;
+
+    public Long getJobCandidateId() {
+        return jobCandidateId;
+    }
+
+    public void setJobCandidateId(final Long jobCandidateId) {
+        this.jobCandidateId = jobCandidateId;
+    }
 
     public Job getJob() {
         return job;
@@ -74,4 +94,13 @@ public class JobCandidate implements Serializable {
     public void setCandidateId(final Long candidateId) {
         this.candidateId = candidateId;
     }
+
+    public ScreenType getNextStep() {
+        return nextStep;
+    }
+
+    public void setNextStep(final ScreenType nextStep) {
+        this.nextStep = nextStep;
+    }
+
 }

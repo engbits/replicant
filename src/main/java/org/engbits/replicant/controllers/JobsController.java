@@ -33,7 +33,6 @@ import javax.servlet.http.HttpServletRequest;
 public class JobsController {
 
     private final CandidatesService candidatesService;
-
     private final JobsService jobsService;
 
     @Inject
@@ -56,7 +55,6 @@ public class JobsController {
 
         final ModelAndView mv = new ModelAndView("job_detail");
         mv.addObject("job", job);
-        mv.addObject("candidates", jobsService.getCandidatesForJob(jobId));
         mv.addObject("allCandidates", candidatesService.getCandidates());
         mv.addObject("jobCandidate", new JobCandidate());
 

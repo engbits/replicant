@@ -2,9 +2,9 @@ package org.engbits.replicant.service;
 
 import org.engbits.replicant.dao.JobCandidatesDao;
 import org.engbits.replicant.dao.JobsDao;
-import org.engbits.replicant.model.Candidate;
 import org.engbits.replicant.model.Job;
 import org.engbits.replicant.model.JobCandidate;
+import org.engbits.replicant.model.ScreenType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
 
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -48,20 +47,10 @@ public class JobsService {
      */
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Job createJob(final Job job) {
-        LOG.debug("Creating new Job: {}", job);
+        LOG.info("Creating new Job: {}", job);
         jobsDao.insert(job);
 
         return job;
-    }
-
-    /**
-     * Gets all of the Candidates that are tagged for a given Job
-     * @param jobId ID of the Job to get Candidates
-     * @return {@link List} of {@link Candidate} for the Job, or empty list if none
-     */
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public List<Candidate> getCandidatesForJob(final Long jobId) {
-        return new LinkedList<>();
     }
 
     /**
@@ -71,7 +60,7 @@ public class JobsService {
      */
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Job getJobById(final Long jobId) {
-        LOG.debug("Getting Job by ID: {}", jobId);
+        LOG.info("Getting Job by ID: {}", jobId);
         return jobsDao.selectById(jobId);
     }
 
@@ -91,12 +80,12 @@ public class JobsService {
      */
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void tagCandidateForJob(final Long candidateId, final Long jobId) {
-        LOG.debug("Tagging Candidate [{}] for Job: {}", candidateId, jobId);
+        LOG.info("Tagging Candidate [{}] for Job: {}", candidateId, jobId);
         final JobCandidate jobCandidate = new JobCandidate();
         jobCandidate.setJobId(jobId);
         jobCandidate.setCandidateId(candidateId);
+        jobCandidate.setNextStep(ScreenType.RESUME);
 
         jobCandidatesDao.insert(jobCandidate);
     }
-
 }

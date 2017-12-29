@@ -25,6 +25,10 @@ public class JobCandidatesDao {
 
     private EntityManager entityManager;
 
+    /**
+     * Inserts a new {@link JobCandidate} entity into persistence
+     * @param jobCandidate {@link JobCandidate} entity to persist
+     */
     public void insert(final JobCandidate jobCandidate) {
         LOG.debug("Inserting Job Candidate: {}", jobCandidate);
         entityManager.persist(jobCandidate);

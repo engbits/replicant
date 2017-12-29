@@ -78,7 +78,7 @@
                             <tbody>
                             <tr th:each="candidate : ${job.candidates}">
                                 <td th:text="|${candidate.candidate.firstName} ${candidate.candidate.lastName}|">Candidate</td>
-                                <td>Unknown</td>
+                                <td th:text="${candidate.nextStep}">Resume</td>
                             </tr>
                             </tbody>
                         </table>
@@ -123,7 +123,7 @@
                         <div class="col-md-12">
                             <form class="form-horizontal" id="tagCandidateForm" th:action="@{/jobs/{jobId}/tag(jobId=${job.jobId})}" th:object="${jobCandidate}" method="post">
                                 <div class="form-group">
-                                    <label for="candidateId" class="col-md-4 control-label">First Name</label>
+                                    <label for="candidateId" class="col-md-4 control-label">Candidate</label>
                                     <div class="col-md-5">
                                         <select class="form-control" id="candidateId" th:field="*{candidateId}">
                                             <option th:each="candidate : ${allCandidates}"

@@ -12,6 +12,7 @@ import org.engbits.replicant.model.Job;
 import org.engbits.replicant.model.JobCandidate;
 import org.engbits.replicant.service.CandidatesService;
 import org.engbits.replicant.service.JobsService;
+import org.engbits.replicant.service.ScreensService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,12 +35,15 @@ public class JobsController {
 
     private final CandidatesService candidatesService;
     private final JobsService jobsService;
+    private final ScreensService screensService;
 
     @Inject
     public JobsController(final JobsService jobsService,
-                          final CandidatesService candidatesService) {
+                          final CandidatesService candidatesService,
+                          final ScreensService screensService) {
         this.jobsService       = jobsService;
         this.candidatesService = candidatesService;
+        this.screensService    = screensService;
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -92,6 +96,7 @@ public class JobsController {
         final Long candidateId = Long.valueOf(request.getParameter("candidateId"));
 
         jobsService.tagCandidateForJob(candidateId, jobId);
+        screensService.createFirstScreenForCandidate(candidateId, jobId);
 
         return "redirect:/jobs/".concat(Long.toString(jobId));
     }

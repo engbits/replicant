@@ -35,8 +35,11 @@ public class Screen implements Serializable {
     @Column(name = "screen_id", nullable = false)
     private Long screenId;
 
-    @Column(name = "job_candidate_id", nullable = false)
-    private Long jobCandidateId;
+    @Column(name = "job_id")
+    private Long jobId;
+
+    @Column(name = "candidate_id")
+    private Long candidateId;
 
     @Enumerated(EnumType.STRING)
     private ScreenType screenType;
@@ -60,12 +63,20 @@ public class Screen implements Serializable {
         this.screenId = screenId;
     }
 
-    public Long getJobCandidateId() {
-        return jobCandidateId;
+    public Long getJobId() {
+        return jobId;
     }
 
-    public void setJobCandidateId(final Long jobCandidateId) {
-        this.jobCandidateId = jobCandidateId;
+    public void setJobId(final Long jobId) {
+        this.jobId = jobId;
+    }
+
+    public Long getCandidateId() {
+        return candidateId;
+    }
+
+    public void setCandidateId(final Long candidateId) {
+        this.candidateId = candidateId;
     }
 
     public LocalDateTime getCreateDate() {

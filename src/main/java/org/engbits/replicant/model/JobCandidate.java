@@ -32,11 +32,6 @@ public class JobCandidate implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name = "job_candidate_id", nullable = false)
-    private Long jobCandidateId;
-
-    @Id
     @Column(name = "job_id", nullable = false)
     public Long jobId;
 
@@ -54,14 +49,6 @@ public class JobCandidate implements Serializable {
 
     @Enumerated(EnumType.STRING)
     private ScreenType nextStep;
-
-    public Long getJobCandidateId() {
-        return jobCandidateId;
-    }
-
-    public void setJobCandidateId(final Long jobCandidateId) {
-        this.jobCandidateId = jobCandidateId;
-    }
 
     public Job getJob() {
         return job;

@@ -52,4 +52,20 @@ public class ScreensService {
         return screen;
     }
 
+    /**
+     * Creates a new Screen for the given Candidate ID and Job ID
+     * @param candidateId ID of the Candidate receiving the screen
+     * @param jobId ID of the Job for which the Candidate is screened
+     * @return {@link Screen} of type {@link ScreenType#RESUME} for the Candidate + Job
+     */
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public Screen createFirstScreenForCandidate(final Long candidateId, final Long jobId) {
+        final Screen screen = new Screen();
+        screen.setScreenType(ScreenType.RESUME);
+        screen.setCandidateId(candidateId);
+        screen.setJobId(jobId);
+
+        return createScreen(screen);
+    }
+
 }

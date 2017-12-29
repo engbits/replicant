@@ -12,6 +12,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.sql.Date;
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -32,7 +33,7 @@ public class JobsDao {
      * @param job {@link Job} to persist
      */
     public void insert(final Job job) {
-        job.setCreateDate(Date.from(Instant.now()));
+        job.setCreateDate(LocalDateTime.now());
         job.setIsActive(true);
 
         LOG.debug("Inserting Job: {}", job);

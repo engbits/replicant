@@ -7,6 +7,8 @@ import org.hibernate.annotations.FetchMode;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -43,7 +45,10 @@ public class Job implements Serializable {
 
     @JsonIgnore
     @Column(name = "create_date", nullable = false, updatable = false)
-    private Date createDate;
+    private LocalDateTime createDate;
+
+    @Column(name = "filled_date")
+    private LocalDateTime filledDate;
 
     @JsonIgnore
     @Column(name = "is_active", nullable = false)
@@ -89,12 +94,29 @@ public class Job implements Serializable {
         this.candidates = candidates;
     }
 
-    public Date getCreateDate() {
+    public LocalDateTime getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
+    public void setCreateDate(LocalDateTime createDate) {
         this.createDate = createDate;
+    }
+
+    public LocalDateTime getFilledDate() {
+        return filledDate;
+    }
+
+    public void setFilledDate(final LocalDateTime filledDate) {
+        this.filledDate = filledDate;
+    }
+
+    public long getDaysOpen() {
+        final LocalDateTime filledDate = getFilledDate();
+        if(filledDate != null) {
+            return Duration.between(getCreateDate(), filledDate).toDays();
+        }
+
+        return Duration.between(getCreateDate(), LocalDateTime.now()).toDays();
     }
 
     public boolean getIsActive() {

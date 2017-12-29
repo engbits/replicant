@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -34,7 +35,7 @@ public class Candidate implements Serializable {
 
     @JsonIgnore
     @Column(name = "create_date", nullable = false, updatable = false)
-    private Date createDate;
+    private LocalDateTime createDate;
 
     @JsonIgnore
     @Column(name = "is_active", nullable = false)
@@ -72,11 +73,11 @@ public class Candidate implements Serializable {
         this.email = email;
     }
 
-    public Date getCreateDate() {
+    public LocalDateTime getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(final Date createDate) {
+    public void setCreateDate(final LocalDateTime createDate) {
         this.createDate = createDate;
     }
 

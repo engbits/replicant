@@ -49,16 +49,21 @@
                             <tr>
                                 <th>Title</th>
                                 <th>Hiring Manager</th>
-                                <th>Candidates</th>
+                                <th class="text-center">Candidates</th>
+                                <th class="text-center">Days Open</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr th:each="job : ${jobs}">
                                 <td><a href="#" th:href="@{'/jobs/' + ${job.jobId}}" th:text="${job.title}">Title</a></td>
                                 <td th:text="${job.hiringManager}">Hiring Manager</td>
-                                <td>
+                                <td class="text-center">
                                     <span th:class="${#lists.size(job.candidates) > 0 ? 'label label-success' : 'label label-warning'}"
                                           th:text="${#lists.size(job.candidates)}">1</span>
+                                </td>
+                                <td class="text-center">
+                                    <span th:class="${job.daysOpen > 60 ? (job.daysOpen > 90 ? 'label label-danger' : 'label label-warning') : 'label label-success'}"
+                                          th:text="${job.daysOpen}">1</span>
                                 </td>
                             </tr>
                             </tbody>

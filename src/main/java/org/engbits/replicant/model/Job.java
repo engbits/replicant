@@ -39,6 +39,7 @@ public class Job implements Serializable {
     @Column(name = "hiring_manager")
     private String hiringManager;
 
+    @JsonIgnore
     @Fetch(FetchMode.SUBSELECT)
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "jobId")
     private List<JobCandidate> candidates = new LinkedList<>();

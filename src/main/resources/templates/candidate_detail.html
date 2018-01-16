@@ -18,8 +18,8 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/jobs"><span class="glyphicon glyphicon-briefcase"></span> Jobs</a></li>
-                    <li class="active"><a href="candidates.html"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Candidates</a></li>
+                    <li class="active"><a href="/jobs"><span class="glyphicon glyphicon-briefcase"></span> Jobs</a></li>
+                    <li><a href="/candidates"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Candidates</a></li>
                 </ul>
             </div>
         </div>
@@ -30,36 +30,29 @@
 
         <div class="row">
             <div class="col-md-12">
-                <h2>Candidates</h2>
+                <h2 th:text="|${candidate.firstName} ${candidate.lastName}|">Candidate Name</h2>
                 <hr/>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-12">
-                <div class="btn-group btn-group-sm pull-right" role="group">
-                    <a href="/candidates/add" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Add Candidate</a>
-                </div>
+                <h3>Candidate Summary</h3>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-12">
-                <br/>
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Candidate</th>
-                        <th>Email</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="candidate : ${candidates}">
-                            <td><a href="#" th:href="@{'/candidates/' + ${candidate.candidateId}}" th:text="|${candidate.firstName} ${candidate.lastName}|">Candidate Name</a></td>
-                            <td th:text="${candidate.email}">person@replicant.com</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <dl class="dl-horizontal">
+                    <dt>First Name</dt>
+                    <dd th:text="${candidate.firstName}">First</dd>
+
+                    <dt>Last Name</dt>
+                    <dd th:text="${candidate.lastName}">Last</dd>
+
+                    <dt>Email</dt>
+                    <dd th:utext="${candidate.email}">Email</dd>
+                </dl>
             </div>
         </div>
 
@@ -71,5 +64,6 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="/js/bootstrap.js"></script>
+<script src="/js/replicant.js"></script>
 </body>
 </html>
